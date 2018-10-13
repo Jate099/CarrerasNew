@@ -32,10 +32,12 @@ public class Cliente extends Thread {
 
     public void startCom() {
         try {
-            s = new DatagramSocket(5000);
+            puerto = 5000;
+
+            s = new DatagramSocket(puerto);
             ip = InetAddress.getByName("10.0.2.2");
 
-            puerto = 5000;
+
         } catch (SocketException e) {
             e.printStackTrace();
         } catch (UnknownHostException e) {
@@ -62,9 +64,9 @@ public class Cliente extends Thread {
 
         byte[] capacidad = new byte[1000];
         DatagramPacket message = new DatagramPacket(capacidad, capacidad.length);
-        System.out.println("Esperando Datos");
+
         try {
-            System.out.println("Datos recibidos");
+
             s.receive(message);
 
 
